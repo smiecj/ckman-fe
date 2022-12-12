@@ -5,7 +5,7 @@ const cp = require('child_process');
 module.exports = function getRepoInfo(cwd = process.cwd()) {
   try {
     const execConfig = { encoding: 'utf8', cwd };
-    const detailString = cp.execSync(`git show --format='%H%n%h%n%cn%n%cI%n%an%n%aI%n%s' -q --encoding=UTF-8`, execConfig);
+    const detailString = cp.execSync(`git show --format='%H%n%h%n%cn%n%cI%n%an%n%aI%n%s' --encoding=UTF-8`, execConfig);
     const [sha, abbreviatedSha, committer, committerDate, author, authorDate, commitMessage] = detailString.split('\n');
     const branch = (() => {
       try {
